@@ -34,3 +34,8 @@ public class LongestSubstringWithoutRepeatingNumber {
         return Math.max(sc.length - j, maxLength);
     }
 }
+
+/* the key in hashmap is the character in the string, and the value in the hashmap is the position of the key,
+scan with i and store the character and their position as pair in the hashmap, then once we found the key that
+already existed in the hashmap, we move the j to the position we previously find and update the maxLength
+ */
