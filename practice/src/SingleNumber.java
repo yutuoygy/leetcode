@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class SingleNumber {
     /*
     Given an array of integers, every element appears twice except for one. Find that single one.
@@ -15,6 +18,11 @@ public class SingleNumber {
         System.out.println(singleNumber(nums2));
         System.out.println(singleNumber(nums3));
         System.out.println(singleNumber(nums4));
+        System.out.println("this is a new result");
+        System.out.println(singleNumber1(nums1));
+        System.out.println(singleNumber1(nums2));
+        System.out.println(singleNumber1(nums3));
+        System.out.println(singleNumber1(nums4));
     }
 
     public static int singleNumber(int[] nums) {
@@ -24,4 +32,22 @@ public class SingleNumber {
         }
         return res;
     }
+
+    public static int singleNumber1(int[] nums) {
+        int res = 0;
+        HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int count = map.getOrDefault(nums[i],0);
+            map.put(nums[i], count + 1);
+
+        }
+        for (Map.Entry<Integer, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 1) {
+                res = entry.getKey();
+            }
+        }
+        return res;
+    }
 }
+
