@@ -24,4 +24,7 @@ public class PalindromeNumber {
 sometimes people may use reverse integer to deal with the problem,
 but as the previous question shows, there will exist overflow situations
 so this way is not going to work.
+
+then use the regular way to reverse the x as rev, when we found x = rev
+then it is a palindrome.
  */
