@@ -17,6 +17,10 @@ public class LongestPalindromicSubstring {
         for (int i = 0; i < len - 1; i++) {
             expandAroundCenter(s, i, i);
             expandAroundCenter(s, i, i + 1);
+            /*
+            we use the expandfromcenter method twice to make sure we cover the smallest case that we have a at i=0, and
+            aa at i=0,1 as a palindrome.
+             */
         }
         return s.substring(lo, lo + maxLen);
     }
@@ -27,7 +31,14 @@ public class LongestPalindromicSubstring {
             k++;
         }
         if (maxLen < k - j - 1) {
+            /*
+            the reason why we use k - j - 1 is because we what we need is the length of substring.
+             */
             lo = j + 1;
+            /*
+            when the left pointer failed to pass the check, we need to record the start position of the palindrome, which
+            means we need to find the left pointer before it fail to pass the check.
+             */
             maxLen = k - j - 1;
         }
     }
