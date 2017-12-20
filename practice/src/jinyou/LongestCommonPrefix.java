@@ -1,6 +1,16 @@
 package jinyou;
 
+import java.util.Arrays;
+
 public class LongestCommonPrefix {
+
+    public static void main(String[] args) {
+        String[] strs1 = new String[]{};
+        String[] strs2 = new String[]{"123456", "123466", "123777", "123868"};
+        System.out.println(longestCommonPrefix(strs1));
+        System.out.println(longestCommonPrefix(strs2));
+
+    }
     /*
     Write a function to find the longest common prefix string amongst an array of strings.
     （最长公共前缀）
@@ -12,7 +22,29 @@ public class LongestCommonPrefix {
         the longest prefix string is abc
      */
 
-    public String longestCommonPrefix(String[] strs) {
+    public static String longestCommonPrefix(String[] strs) {
+        StringBuilder result = new StringBuilder();
+
+        if (strs != null && strs.length > 0) {
+            Arrays.sort(strs);
+
+            char [] a = strs[0].toCharArray();
+            char [] b = strs[strs.length - 1].toCharArray();
+
+            for (int i = 0; i < a.length; i++) {
+                if (b.length > i && b[i] == a[i]) {
+                    /*
+                    b.length > i means we still have length waiting to be checked
+                    and b[i] == a[i] means in the index i we have same value in the
+                    first and last string of the sorted string set.
+                     */
+                    result.append(b[i]);
+                } else {
+                    return result.toString();
+                }
+            }
+        }
+        return result.toString();
 
     }
 
