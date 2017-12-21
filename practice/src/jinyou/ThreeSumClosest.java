@@ -16,10 +16,24 @@ public class ThreeSumClosest {
 
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
+        /*
+        sort array in a specific order.
+         */
         int result = nums[0] + nums[1] + nums[nums.length - 1];
+        /*
+        identify the result which will be used to compare to
+        the target and sum.
+         */
 
         for (int i = 0; i < nums.length - 2; i++) {
+            /*
+            the same as the 3Sum problem with the num.length - 2
+            problem.
+             */
             int start = i + 1, end = nums.length -1;
+            /*
+            identify two other pointers used to iterate with the array.
+             */
             while (start < end) {
                 int sum = nums[i] + nums[start] + nums[end];
                 if (sum > target) {
@@ -28,6 +42,9 @@ public class ThreeSumClosest {
                     start++;
                 }
                 if (Math.abs(sum - target) < Math.abs(result - target)) {
+                    /*
+                    comapre the abs to see the
+                     */
                     result = sum;
                 }
             }
