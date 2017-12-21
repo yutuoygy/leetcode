@@ -19,19 +19,49 @@ public class RemoveNthNode {
     }
 
     public ListNode removeNthFromEnd(ListNode head, int n){
-        ListNode start = new ListNode(0);
-        ListNode slow =start, fast = start;
-        slow.next = head;
+        if (head == null || head.next == null) {
+            return null;
+        }
+        /*
+        First of all we should consider the case if the head
+        is null or not.
+         */
+        ListNode faster = head;
+        ListNode slower = head;
 
-        for (int i = 1; i <= n + 1; i++) {
-            fast = fast.next;
+
+        for (int i = 0; i < n; i++) {
+            faster = faster.next;
         }
-        while (fast != null) {
-            slow = slow.next;
-            fast = fast.next;
+        /*
+        先让faster指针起步往后跑n个点来确保faster和slower之间
+        有n个位子的gap
+         */
+
+        if (faster == null) {
+            head = head.next;
+            return head;
         }
-        slow.next = slow.next.next;
-        return start.next;
+        /*
+        这时候说明LikedList的长度其实小于n
+         */
+
+        while (faster.next != null) {
+            slower = slower.next;
+            faster = faster.next;
+        }
+        /*
+        when the length of LinkedList is larger than n
+        we need to matain the gap between the slower and
+        fatser.
+         */
+
+        slower.next = slower.next.next;
+        /*
+        slower pointer is in the prev node that should be deleted
+        that's why we need to let slower point to the slower.next.next.
+         */
+        return head;
     }
 
 }
