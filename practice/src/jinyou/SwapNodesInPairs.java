@@ -21,11 +21,23 @@ public class SwapNodesInPairs {
         if (p == null || p.next == null) {
             return head;
         }
+        /*
+        the case that p is null or the node after p is null
+        which means there is only one node in the list
+         */
         ListNode newHead = p.next;
+        /*
+        we identify a new head as the second node will be head
+        after reverse
+         */
         p.next = p.next.next;
         newHead.next = p;
         p =newHead.next.next;
         newHead.next.next = swapPairs(p);
+        /*
+        we move the new hea to the third node can
+        do the reverse again.
+         */
         return newHead;
     }
 
