@@ -18,6 +18,9 @@ public class MergeKSortedList {
     public ListNode mergeKLists(ArrayList<ListNode> lists) {
         if (lists == null || lists.size() == 0) {
             return null;
+            /*
+            the case when lists equals to zero.
+             */
         }
         return Msort(lists, 0, lists.size() - 1);
     }
@@ -28,9 +31,18 @@ public class MergeKSortedList {
             ListNode leftList = Msort(lists, low, mid);
             ListNode rightList = Msort(lists, mid + 1, high );
             return mergeTwoLists(leftList, rightList);
+            /*
+            use the recursion way to seperate the arraylist into numbers of
+            two linked lits, which is the base case, then use the merge two linked
+            list way to solve this problem
+             */
         }
         return lists.get(low);
     }
+    /*
+    the following part is a typically merge two sorted linkelist problem
+    as I have done before.
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         if (l1 == null) {
             return l1;
